@@ -16,7 +16,7 @@ The Analog circuit consists of following blocks"
 5. ADC 
 
 
-Team & Designers:
+Team members& Designers:
 1. Deepak verma
 2. Digamber Kumar Pandey
 3. Richa Mishra

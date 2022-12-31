@@ -82,6 +82,46 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
+
+SRAM_Wrapper_top SRAM_IMC_TOP(
+
+.clk(wb_clk_i),					//Common clock
+.reset_n(wb_rst_i),					//wb_rst_i	
+.wbs_we_i(wbs_we_i) ,					//wbs_we_i=0 for read ;wbs_we_i=1 for write		
+.wishbone_buffer_data_in(wbs_dat_i), 			//wbs_dat_i
+.wishbone_rw_addr(wbs_adr_i),				//wishbone_addr
+.wishbone_databus_out(wbs_dat_o),	 		//wbs_dat_o
+.VCLP(analog_io[11]),					// connect to Analog IO
+.EN(analog_io[12]),					// connect to Analog IO
+.Iref0(analog_io[7]),					// connect to Analog IO
+.Iref1(analog_io[8]),					// connect to Analog IO
+.Iref2(analog_io[9]),					// connect to Analog IO
+.Iref3(analog_io[13]),					// connect to Analog IO
+.Iout0(analog_io[14]),					// Deepak -30/12/22 - added for MPW8
+.Iout1(analog_io[15]),					// Deepak -30/12/22 - added for MPW8
+.Iout2(analog_io[16]),					// Deepak -30/12/22 - added for MPW8
+.Iout3(analog_io[17]),					// Deepak -30/12/22 - added for MPW8
+.EN_VCLP(la_data_out[0]),				//Deepak_28/11/22: needs to be passed to analog DUT for EN & VCLP enable
+.MAC_starting(la_data_out[1]),				// Deepak : Enable for MUX for Iref			
+.OB_demux(la_data_out[2]),				// Deepak: select line for Irefs
+.controller_opcode(la_data_out[5:3]),
+.controller_ext_state(la_data_out[7:6]),
+.controller_int_state(la_data_out[10:8]),
+.full_IB(la_data_out[11]),
+.full_WB(la_data_out[12]), 
+.full_SA(la_data_out[13]), 
+.full_OB(la_data_out[14]),
+.empty_IB(la_data_out[15]), 
+.empty_WB(la_data_out[16]), 
+.empty_SA(la_data_out[17]), 
+.empty_OB(la_data_out[18])
+); 
+
+
+
+
+/*
+
 user_proj_example mprj (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
@@ -117,6 +157,8 @@ user_proj_example mprj (
     // IRQ
     .irq(user_irq)
 );
+
+*/
 
 endmodule	// user_project_wrapper
 
